@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -14,7 +15,6 @@ public class GUI implements ActionListener {
 	private JTextField wordInput;
 	private JTextField numInput;
 	private JButton btnRun;
-	private JButton btnStop;
 	private String targetWord;
 	private int numMonkeys;
 	private JLabel foundBy;
@@ -23,6 +23,7 @@ public class GUI implements ActionListener {
 	private JLabel lblResults;
 	private boolean stopped;
 	private tester simulation;
+	private JTextArea log;
 	
 
 	/**
@@ -71,14 +72,9 @@ public class GUI implements ActionListener {
 		frame.getContentPane().add(lblNumberOfMonkeys);
 		
 		btnRun = new JButton("Run");
-		btnRun.setBounds(120, 90, 117, 29);
+		btnRun.setBounds(175, 90, 117, 29);
 		frame.getContentPane().add(btnRun);
 		btnRun.addActionListener(this);
-		
-		btnStop = new JButton("Stop");
-		btnStop.setBounds(240, 90, 117, 29);
-		frame.getContentPane().add(btnStop);
-		btnStop.addActionListener(this);
 		
 		wordInput = new JTextField();
 		wordInput.setText("lowercase word here");
@@ -95,8 +91,10 @@ public class GUI implements ActionListener {
 		numInput.addActionListener(this);
 		
 		lblResults = new JLabel("Results-");
-		lblResults.setBounds(6, 161, 438, 16);
+		lblResults.setBounds(6, 161, 438, 16); 
 		frame.getContentPane().add(lblResults);
+		
+		//300 161 scroll pos
 		
 		
 		foundBy = new JLabel("Found by:");
@@ -121,9 +119,13 @@ public class GUI implements ActionListener {
 			{
 				
 				simulation = new tester(targetWord,numMonkeys);
-//				simulation.runSim(); //issues here
-				simulation.start();
 				lblResults.setText("Results- Running...");
+				simulation.run();
+				lblResults.setText("Results-");
+				foundBy.setText("Found by: "+simulation.TgetName());
+				lettersUsed.setText("Number of letters used: "+simulation.TgetStrokes());
+				time.setText("Time: "+simulation.TgetTime()+" seconds");
+				
 			}
 			
 			else if(!simulation.TisFinished())
@@ -144,21 +146,10 @@ public class GUI implements ActionListener {
 		{
 			numMonkeys = Integer.parseInt(numInput.getText());
 		}
-		if(e.getSource()==btnStop)
-		{
-			stopped = true;
 
-		}
 
 	}
 	
-	public void printResults()
-	{
-		lblResults.setText("Results-");
-		foundBy.setText("Found by: "+simulation.TgetName());
-		lettersUsed.setText("Number of letters used: "+simulation.TgetStrokes());
-		time.setText("Time: "+simulation.TgetTime()+" seconds");
-	}
 	
 	public boolean isStopped()
 	{

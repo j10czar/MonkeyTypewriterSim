@@ -1,6 +1,6 @@
 import java.util.Scanner;
 //hello
-public class tester extends Thread{
+public class tester{
 
 	private int pos;
 	private Monkey[] monkies;
@@ -52,7 +52,7 @@ public class tester extends Thread{
 			monkies[i].start();
 		}
 	
-		while(!finished&&!gui.isStopped())
+		while(!finished)
 		{
 			
 			for(int i = 0; i < m ; i++ )
@@ -64,7 +64,6 @@ public class tester extends Thread{
 					{
 						finished = true;
 						pos = i;
-						gui.printResults();
 						
 						
 					}
