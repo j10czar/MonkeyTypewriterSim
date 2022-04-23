@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//hello
 public class tester extends Thread{
 
 	private int pos;
@@ -9,6 +9,7 @@ public class tester extends Thread{
 	private String target;
 	private int numMonkeys;
 	private static GUI gui;
+	private string hello;
 
 	
 
@@ -17,6 +18,7 @@ public class tester extends Thread{
 	{
 		target = t;
 		numMonkeys = n;
+		
 	}
 
 	public static void main(String[] args)
