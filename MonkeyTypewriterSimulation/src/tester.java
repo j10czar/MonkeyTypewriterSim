@@ -9,12 +9,14 @@ public class tester extends Thread{
 	private String target;
 	private int numMonkeys;
 	private static GUI gui;
+	private string hello;
 
 	
 	public tester(String t , int n)
 	{
 		target = t;
 		numMonkeys = n;
+		
 	}
 
 	public static void main(String[] args)
