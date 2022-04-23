@@ -1,6 +1,8 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintStream;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,6 +11,9 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
+
+import net.codejava.swing.CustomOutputStream;
 
 public class GUI implements ActionListener {
 
@@ -25,9 +30,9 @@ public class GUI implements ActionListener {
 	private boolean stopped;
 	private tester simulation;
 	private JTextArea log;
+	private PrintStream printstream;
 	private JScrollPane scroll;
-	
-	private String branchtest;
+	private PrintStream standardout;
 
 	/**
 	 * Launch the application.
@@ -97,8 +102,29 @@ public class GUI implements ActionListener {
 		lblResults.setBounds(6, 161, 438, 16); 
 		frame.getContentPane().add(lblResults);
 		
-		//300 161 scroll pos
-		//150x150
+//		//300 161 scroll pos
+//		//150x150
+		log = new JTextArea();
+		log.setBounds(260, 160, 150, 95);
+		log.setBorder( new LineBorder(Color.BLACK));
+		log.setEditable(false);
+		printstream = new PrintStream(new CustomOutputStream(log));
+		standardout = System.out;
+		
+		System.setOut(printstream);
+		
+		
+		
+		
+		frame.getContentPane().add(log);
+		
+		
+		scroll = new JScrollPane();
+		scroll.setBounds(260, 160, 150, 95);
+		scroll.getViewport().setBackground(Color.WHITE);
+		scroll.getViewport().add(log);
+		frame.getContentPane().add(scroll);
+		
 		
 		
 		
