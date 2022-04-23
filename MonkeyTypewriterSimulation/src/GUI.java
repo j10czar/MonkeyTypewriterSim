@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -24,7 +25,9 @@ public class GUI implements ActionListener {
 	private boolean stopped;
 	private tester simulation;
 	private JTextArea log;
+	private JScrollPane scroll;
 	
+	private String branchtest;
 
 	/**
 	 * Launch the application.
@@ -95,6 +98,8 @@ public class GUI implements ActionListener {
 		frame.getContentPane().add(lblResults);
 		
 		//300 161 scroll pos
+		//150x150
+		
 		
 		
 		foundBy = new JLabel("Found by:");
