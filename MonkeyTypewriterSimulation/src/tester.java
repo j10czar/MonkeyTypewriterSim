@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//hello
 public class tester extends Thread{
 
 	private int pos;
