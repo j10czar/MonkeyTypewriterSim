@@ -9,8 +9,7 @@ public class tester extends Thread{
 	private String target;
 	private int numMonkeys;
 	private static GUI gui;
-	private String testing;
-	private String testingsa;
+
 	
 
 	
